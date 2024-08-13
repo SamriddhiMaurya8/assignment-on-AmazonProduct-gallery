@@ -1,4 +1,8 @@
+
+
 const api_url ='https://fakestoreapiserver.reactbd.com/amazonproducts'; 
+
+let userData = []; 
 
 fetch(api_url)
   .then(response => {
@@ -7,16 +11,19 @@ fetch(api_url)
     }
     return response.json();
   })
-  .then(userData => {
-    console.log( userData);
+  .then(data => {
+    userData = data;  
+    console.log(userData);
     ShowCards(userData); 
   })
   .catch(error => {
-    console.error( error);
+    console.error(error);
   });
 
 function ShowCards(cards) {
     const mainSection = document.querySelector('.main-section');
+
+    mainSection.innerHTML = ''; 
 
     const allCard = document.createElement('section');
     allCard.classList.add('all-cards');
@@ -33,7 +40,7 @@ function ShowCards(cards) {
 
         const idElement = document.createElement('p');
         idElement.className = 'id';
-        idElement.textContent =`id:${card.id}`;  
+        idElement.textContent = `id: ${card.id}`;  
 
         const categoryElement = document.createElement('p');
         categoryElement.className = 'category';
@@ -44,10 +51,8 @@ function ShowCards(cards) {
 
         const imageElement = document.createElement('img');
         imageElement.className = 'image';
-       
-
-        imageElement.setAttribute('src' , card.image) ; 
-        imageElement.setAttribute('alt', card.alt )
+        imageElement.setAttribute('src', card.image); 
+        imageElement.setAttribute('alt', card.alt);
 
         cardTop.appendChild(imgTop);
         cardTop.appendChild(imageElement);
@@ -61,46 +66,38 @@ function ShowCards(cards) {
 
         const descriptionElement = document.createElement('p');
         descriptionElement.className = 'description';
-       
         descriptionElement.textContent = card.description;
-
 
         const priceElement = document.createElement('p');
         priceElement.className = 'price';
-        priceElement.textContent = `$${card.price}`;
-        
+        priceElement.textContent = `$${card.price}`;  
 
         const rate = document.createElement('p');
-        rate.className ='rating' ; 
-        rate.textContent = card.rating.rate ; 
-        
+        rate.className = 'rating';
+        rate.textContent = card.rating.rate;
 
         cardBottom.appendChild(titleElement);
         cardBottom.appendChild(descriptionElement);
         cardBottom.appendChild(priceElement);
-        cardBottom.appendChild(rate)
+        cardBottom.appendChild(rate);
 
         cardContainer.appendChild(cardTop);
         cardContainer.appendChild(cardBottom);
 
         allCard.appendChild(cardContainer);
-
-        mainSection.appendChild(allCard);
     });
+
+    mainSection.appendChild(allCard);
 }
 
+const filterInput = document.getElementById('input');
 
-function FetchProduct(){
-
-}
-
-const filterInput = document.getElementById('input') ; 
-filterInput.addEventListener('input', (e) => {
+filterInput.addEventListener('keyup', (e) => {
     const text = e.target.value.toLowerCase();
-    if(text.length >3 ){
-
+    if (text.length >2) {
+        const filteredCards = userData.filter(card => card.category.toLowerCase().includes(text));
+        ShowCards(filteredCards);
+    } else {
+        ShowCards(userData);  
     }
-    
-    
-  });
-  
+});

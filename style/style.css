@@ -1,19 +1,17 @@
 body {
+  margin-left: 23px;
   font-family: Arial, Helvetica, sans-serif;
 }
 body h1 {
   margin-left: 23px;
 }
-
-.main-section {
-  margin-left: 23px;
-}
-.main-section #input {
+body #input {
   width: 80%;
   height: 37px;
   border-radius: 8px;
   border: 2px solid rgb(0, 98, 128);
 }
+
 .main-section .all-cards {
   gap: 50px;
   margin-top: 50px;
