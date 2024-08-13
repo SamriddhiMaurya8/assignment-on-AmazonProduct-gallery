@@ -1,0 +1,91 @@
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    h1{
+        margin-left: 23px;
+    }
+}
+
+.main-section {
+    margin-left: 23px;
+
+    #input {
+        width: 80%;
+        height: 37px;
+        border-radius: 8px;
+        border: 2px solid rgb(0, 98, 128);
+    }
+
+    .all-cards {
+        
+        gap: 50px;
+        margin-top: 50px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+
+
+        .card-container {
+            border: 3px solid rgb(0, 98, 128);
+            border-radius: 30px;
+            box-shadow: 0px 0px 10px grey;
+            width: 374px; 
+            height: 485px;
+            box-sizing: border-box;
+
+            .card-top {
+                .img-top {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .id {
+                        margin-left: 12px;
+                        color: white;
+                        padding: 5px;
+                        border-radius: 5px;
+                        background-color: orangered;
+                    }
+
+                    .category {
+                        margin-right: 12px;
+                        background-color: red;
+                        color: white;
+                        padding: 5px;
+                        border-radius: 5px;
+                    }
+                }
+
+                .image {
+                    width: 300px;
+                    height: 150px;
+                    object-fit: contain;
+                    margin-left: 25px;
+                }
+            }
+
+            .card-bottom {
+                text-align: center;
+
+                p {
+                    font-weight: 600;
+                }
+                .description{
+                    font-weight: 100;
+                    font-size: 12px;
+                    width: 100%;
+                }
+                .price {
+                    color: red;
+                }
+                .rating{
+                    width: 44px;
+                    background-color: yellow;
+                    height: 23px;
+                    text-align: center;
+                  border-radius: 2px ;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,76 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+body h1 {
+  margin-left: 23px;
+}
+
+.main-section {
+  margin-left: 23px;
+}
+.main-section #input {
+  width: 80%;
+  height: 37px;
+  border-radius: 8px;
+  border: 2px solid rgb(0, 98, 128);
+}
+.main-section .all-cards {
+  gap: 50px;
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.main-section .all-cards .card-container {
+  border: 3px solid rgb(0, 98, 128);
+  border-radius: 30px;
+  box-shadow: 0px 0px 10px grey;
+  width: 374px;
+  height: 485px;
+  box-sizing: border-box;
+}
+.main-section .all-cards .card-container .card-top .img-top {
+  display: flex;
+  justify-content: space-between;
+}
+.main-section .all-cards .card-container .card-top .img-top .id {
+  margin-left: 12px;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: orangered;
+}
+.main-section .all-cards .card-container .card-top .img-top .category {
+  margin-right: 12px;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+}
+.main-section .all-cards .card-container .card-top .image {
+  width: 300px;
+  height: 150px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: 25px;
+}
+.main-section .all-cards .card-container .card-bottom {
+  text-align: center;
+}
+.main-section .all-cards .card-container .card-bottom p {
+  font-weight: 600;
+}
+.main-section .all-cards .card-container .card-bottom .description {
+  font-weight: 100;
+  font-size: 12px;
+  width: 100%;
+}
+.main-section .all-cards .card-container .card-bottom .price {
+  color: red;
+}
+.main-section .all-cards .card-container .card-bottom .rating {
+  width: 44px;
+  background-color: yellow;
+  height: 23px;
+  text-align: center;
+  border-radius: 2px;
+}/*# sourceMappingURL=style.css.map */
