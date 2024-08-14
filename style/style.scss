@@ -2,12 +2,14 @@
 
 body {
     margin-left: 23px;
+    max-width: 100vw;
     font-family: Arial, Helvetica, sans-serif;
     h1{
         margin-left: 23px;
     }
     #input {
-        width: 80%;
+        width: 90%;
+        
         height: 37px;
         border-radius: 8px;
         border: 2px solid rgb(0, 98, 128);
@@ -21,17 +23,41 @@ body {
         border: 1px solid #ddd;
         max-height: 200px;
         overflow-y: auto;
+        border-radius: 5px;
         z-index: 1000;
       }
       
       #suggestions li {
         padding: 10px;
         cursor: pointer;
+        border: 1px solid rgb(0, 98, 128);
+        border-radius: 5px ;
       }
       
       #suggestions li:hover {
         background-color: #f0f0f0;
       }
+      .suggestion-box {
+        position: absolute;
+        background-color: white;
+        // border: 1px solid #7c2c2c;
+        max-height: 150px;
+        overflow-y: auto;
+        z-index: 1000;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    
+    .suggestion-box li {
+        padding: 8px;
+        cursor: pointer;
+    }
+    
+    .suggestion-box li:hover {
+        background-color: #f0f0f0;
+    }
 }
 
 .main-section {
@@ -43,7 +69,11 @@ body {
         gap: 46px;
         margin-top: 50px;
         display: grid;
-        grid-template-columns: repeat(3, 2fr);
+        grid-template-columns: repeat(3, 1fr);
+
+        @media screen and (max-width:690px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
 
         @media screen and (max-width:469px) {
             grid-template-columns: repeat(1, 1fr);
@@ -55,6 +85,7 @@ body {
             box-shadow: 0px 0px 10px grey;
             width: 374px; 
             padding: 10px;
+
             // background-color: rgb(225, 249, 249);
             height: 485px;
             box-sizing: border-box;
@@ -82,19 +113,27 @@ body {
                 }
 
                 .image {
-                    width: 300px;
+                    width: 250px;
                     height: 150px;
                     object-fit: contain;
                     padding: 5px;
                     margin-left: 25px;
+                    object-fit: contain;
+                    box-shadow: 0 0 5px grey;
                     // background-color: aliceblue;
                     // border: 1px solid grey;
+                }
+                .image:hover{
+                    transform: scale(1.1);
+                    cursor: pointer;
+
                 }
             }
 
             .card-bottom {
                 text-align: center;
                 // background-color: grey;
+                // height: 100px;
 
                 p {
                     font-weight: 600;
