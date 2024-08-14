@@ -12,6 +12,26 @@ body {
         border-radius: 8px;
         border: 2px solid rgb(0, 98, 128);
     }
+    #suggestions {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        background-color: white;
+        border: 1px solid #ddd;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+      
+      #suggestions li {
+        padding: 10px;
+        cursor: pointer;
+      }
+      
+      #suggestions li:hover {
+        background-color: #f0f0f0;
+      }
 }
 
 .main-section {
@@ -20,18 +40,22 @@ body {
 
     .all-cards {
         
-        gap: 50px;
+        gap: 46px;
         margin-top: 50px;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 2fr);
 
-
+        @media screen and (max-width:469px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
 
         .card-container {
             border: 3px solid rgb(0, 98, 128);
             border-radius: 30px;
             box-shadow: 0px 0px 10px grey;
             width: 374px; 
+            padding: 10px;
+            // background-color: rgb(225, 249, 249);
             height: 485px;
             box-sizing: border-box;
 
@@ -61,30 +85,36 @@ body {
                     width: 300px;
                     height: 150px;
                     object-fit: contain;
+                    padding: 5px;
                     margin-left: 25px;
+                    // background-color: aliceblue;
+                    // border: 1px solid grey;
                 }
             }
 
             .card-bottom {
                 text-align: center;
+                // background-color: grey;
 
                 p {
                     font-weight: 600;
+                    font-size: 12px;
                 }
                 .description{
                     font-weight: 100;
-                    font-size: 12px;
+                    font-size: 10px;
                     width: 100%;
+                    
                 }
                 .price {
                     color: red;
                 }
                 .rating{
-                    width: 44px;
-                    background-color: yellow;
+                    width: 64px;
+                    background-color: rgb(0, 153, 255);
                     height: 23px;
                     text-align: center;
-                  border-radius: 2px ;
+                    border-radius: 34px ;
                 }
             }
         }

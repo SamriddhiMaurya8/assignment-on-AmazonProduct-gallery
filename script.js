@@ -13,7 +13,7 @@ fetch(api_url)
   })
   .then(data => {
     userData = data;  
-    console.log(userData);
+    // console.log(userData);
     ShowCards(userData); 
   })
   .catch(error => {
@@ -72,9 +72,16 @@ function ShowCards(cards) {
         priceElement.className = 'price';
         priceElement.textContent = `$${card.price}`;  
 
+ 
+
+
         const rate = document.createElement('p');
         rate.className = 'rating';
-        rate.textContent = card.rating.rate;
+        rate.textContent = `${card.rating.rate} ⭐` ;
+
+       
+
+
 
         cardBottom.appendChild(titleElement);
         cardBottom.appendChild(descriptionElement);
@@ -90,14 +97,119 @@ function ShowCards(cards) {
     mainSection.appendChild(allCard);
 }
 
+
+
+
+
 const filterInput = document.getElementById('input');
+console.log(filterInput)
+
+// filterInput.addEventListener('keyup', (e) => {
+//     const text = e.target.value.toLowerCase();
+//     if (text.length >2) {
+//         const filteredCards = userData.filter(card => card.category.toLowerCase().includes(text));
+//         ShowCards(filteredCards);
+//     } else {
+//         ShowCards(userData);  
+//     }
+// });
+
+
+
+
+
+
+
+// const sugList = document.createElement('ul');
+// sugList.id = 'suggestions';
+// filterInput.parentNode.insertBefore(sugList, filterInput.nextSibling);
+
+// filterInput.addEventListener('keyup', (e) => {
+//   const text = e.target.value.toLowerCase();
+//   if (text.length > 2) {
+//     const filteredCards = userData.filter(card => card.category.toLowerCase().includes(text));
+//     ShowCards(filteredCards);
+//     showSuggestions(text);
+//   } else {
+//     ShowCards(userData);
+//     clearSuggestions();
+//   }
+// });
+
+// function showSuggestions(text) {
+//   const suggestions = [];
+//   const categories = {};
+
+//   for (let i = 0; i < userData.length; i++) {
+//     const category = userData[i].category;
+//     if (!categories[category] && category.toLowerCase().includes(text)) {
+//       categories[category] = true;
+//       suggestions.push(category);
+//     }
+//   }
+
+//   sugList.innerHTML = '';
+//   for (let i = 0; i < suggestions.length; i++) {
+//     const li = document.createElement('li');
+//     li.textContent = suggestions[i];
+//     li.addEventListener('click', () => {
+//       filterInput.value = suggestions[i];
+//       const filteredCards = userData.filter(card => card.category.toLowerCase() === suggestions[i].toLowerCase());
+//       ShowCards(filteredCards);
+//       clearSuggestions();
+//     });
+//     sugList.appendChild(li);
+//   }
+// }
+
+// function clearSuggestions() {
+//   sugList.innerHTML = '';
+// }
+
+// document.addEventListener('click', (e) => {
+//   if (e.target !== filterInput && e.target !== sugList) {
+//     clearSuggestions();
+//   }
+// });
+
 
 filterInput.addEventListener('keyup', (e) => {
-    const text = e.target.value.toLowerCase();
-    if (text.length >2) {
-        const filteredCards = userData.filter(card => card.category.toLowerCase().includes(text));
-        ShowCards(filteredCards);
-    } else {
-        ShowCards(userData);  
-    }
+  const text = e.target.value.toLowerCase();
+  console.log('text',  text); 
+  if (text.length > 2) {
+    const filteredCards = userData.filter(card => card.category.toLowerCase().includes(text));
+    console.log('cards', filteredCards); 
+    ShowCards(filteredCards);
+    showSuggestions(text);
+  } else {
+    ShowCards(userData);
+    clearSuggestions();
+  }
 });
+
+function showSuggestions(text) {
+  const suggestions = [];
+  const categories = [];
+
+  for (let i = 0; i < userData.length; i++) {
+    const category = userData[i].category;
+    if (!categories[category] && category.toLowerCase().includes(text)) {
+      categories[category] = true;
+      suggestions.push(category);
+    }
+  }
+
+  console.log('sugg...:', suggestions); 
+  sugList.innerHTML = '';
+  for (let i = 0; i < suggestions.length; i++) {
+    const li = document.createElement('li');
+    li.textContent = suggestions[i];
+    li.addEventListener('click', () => {
+      filterInput.value = suggestions[i];
+      const filteredCards = userData.filter(card => card.category.toLowerCase() === suggestions[i].toLowerCase());
+      ShowCards(filteredCards);
+      clearSuggestions();
+    });
+    sugList.appendChild(li);
+  }
+}
